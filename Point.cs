@@ -22,6 +22,10 @@ namespace PointNS
             return W == 0;
         }
 
+        public double calculateMagnitude() {
+            return Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2) + Math.Pow(Z, 2));
+        }
+
         public static Point createPoint(float x, float y, float z) {
             return new Point(x, y, z, 1.0f);
         }
@@ -62,5 +66,14 @@ namespace PointNS
         public static Point negatePoint(Point p) {
             return new Point(-p.X, -p.Y, -p.Z, p.W);
         }
+
+        public static Point scaleVector(Point pointA, float scalar) {
+            return createVector(
+                pointA.X * scalar,
+                pointA.Y * scalar,
+                pointA.Z * scalar
+            );
+        }
+
     }
 }

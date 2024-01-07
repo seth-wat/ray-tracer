@@ -1,4 +1,3 @@
-using System.Xml.XPath;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PointNS;
 
@@ -102,6 +101,68 @@ namespace PointTestsNS
             bool isEqual = Point.arePointsEqual(pResult, pExpected);
 
             Assert.AreEqual(isEqual, true);
+        }
+
+        [TestMethod]
+        public void ScaleVector_MultipliesByScalar() {
+            Point p = Point.createVector(1, -2, 3);
+            Point scaled = Point.scaleVector(p, 3.5f);
+
+            Point exepected = Point.createVector(3.5f, -7, 10.5f);
+
+            bool isEqual = Point.arePointsEqual(scaled, exepected);
+
+            Assert.AreEqual(isEqual, true);
+        }
+
+        [TestMethod]
+        public void Compute_Magnitude_A() {
+            Point p = Point.createVector(1, 0, 0);
+            double magnitude = p.calculateMagnitude();
+
+            double expected = 1;
+
+            Assert.AreEqual(magnitude, expected);
+        }
+
+        [TestMethod]
+        public void Compute_Magnitude_B() {
+           Point p = Point.createVector(0, 1, 0);
+            double magnitude = p.calculateMagnitude();
+
+            double expected = 1;
+
+            Assert.AreEqual(magnitude, expected);
+        }
+
+        [TestMethod]
+        public void Compute_Magnitude_C() {
+           Point p = Point.createVector(0, 0, 1);
+            double magnitude = p.calculateMagnitude();
+
+            double expected = 1;
+
+            Assert.AreEqual(magnitude, expected);
+        }
+
+        [TestMethod]
+        public void Compute_Magnitude_D() {
+           Point p = Point.createVector(1, 2, 3);
+            double magnitude = p.calculateMagnitude();
+
+            double expected = Math.Sqrt(14);
+
+            Assert.AreEqual(magnitude, expected);
+        }
+
+        [TestMethod]
+        public void Compute_Magnitude_E() {
+           Point p = Point.createVector(-1, -2, -3);
+            double magnitude = p.calculateMagnitude();
+
+            double expected = Math.Sqrt(14);
+
+            Assert.AreEqual(magnitude, expected);
         }
     }
 }
