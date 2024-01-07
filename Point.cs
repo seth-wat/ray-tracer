@@ -40,5 +40,27 @@ namespace PointNS
                     return false;
                 }
         }
+
+        public static Point addPoints(Point pointA, Point pointB) {
+            return new Point(
+                pointA.X + pointB.X,
+                pointA.Y + pointB.Y,
+                pointA.Z + pointB.Z,
+                pointA.W + pointB.W
+            );
+        }
+
+        public static Point subtractPoints(Point pointA, Point pointB) {
+            return new Point(
+                pointA.X - pointB.X,
+                pointA.Y - pointB.Y,
+                pointA.Z - pointB.Z,
+                pointA.W - pointB.W
+            );
+        }
+
+        public static Point negatePoint(Point p) {
+            return new Point(-p.X, -p.Y, -p.Z, p.W);
+        }
     }
 }

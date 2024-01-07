@@ -1,3 +1,4 @@
+using System.Xml.XPath;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PointNS;
 
@@ -63,6 +64,44 @@ namespace PointTestsNS
             bool isEqual = Point.arePointsEqual(pA, pB);
 
             Assert.AreEqual(isEqual, false);
+        }
+
+        [TestMethod]
+        public void AddPoints_AddsPoints() {
+            Point pA = Point.createPoint(3, -2, 5);
+            Point pB = Point.createVector(-2, 3, 1);
+
+            Point pExpected = Point.createPoint(1, 1, 6);
+            Point pResult = Point.addPoints(pA, pB);
+
+            bool isEqual = Point.arePointsEqual(pExpected, pResult);
+
+            Assert.AreEqual(isEqual, true);
+        }
+
+        [TestMethod]
+        public void SubtractPoints_SubtractsPoints() {
+            Point pA = Point.createPoint(3, 2, 1);
+            Point pB = Point.createPoint(5, 6, 7);
+
+            Point pExpected = Point.createVector(-2, -4, -6);
+            Point pResult = Point.subtractPoints(pA, pB);
+
+            bool isEqual = Point.arePointsEqual(pExpected, pResult);
+
+            Assert.AreEqual(isEqual, true);
+        }
+
+        [TestMethod]
+        public void NegatePoint_NegatesPoint() {
+            Point pA = Point.createVector(1, -2, 3);
+
+            Point pExpected = Point.createVector(-1, 2, -3);
+            Point pResult = Point.negatePoint(pA);
+
+            bool isEqual = Point.arePointsEqual(pResult, pExpected);
+
+            Assert.AreEqual(isEqual, true);
         }
     }
 }
