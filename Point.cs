@@ -5,6 +5,8 @@ namespace PointNS
         float Y;
         float Z;
         float W;
+        private const float Epsilon = 0.00001f;
+
         public Point(float x, float y, float z, float w) {
             X = x;
             Y = y;
@@ -26,6 +28,17 @@ namespace PointNS
 
         public static Point createVector(float x, float y, float z) {
             return new Point(x, y, z, 0);
+        }
+
+        public static bool arePointsEqual(Point pointA, Point pointB) {
+            if ((pointA.X - pointB.X) < Epsilon &&
+                (pointA.Y - pointB.Y) < Epsilon &&
+                (pointA.Z - pointB.Z) < Epsilon &&
+                (pointA.W - pointB.W) < Epsilon) {
+                    return true;
+                } else {
+                    return false;
+                }
         }
     }
 }

@@ -44,5 +44,25 @@ namespace PointTestsNS
             Assert.AreEqual(isVector, true);
             Assert.AreEqual(isPoint, false);
         }
+
+        [TestMethod]
+        public void ArePointsEqual_AreEqual() {
+            Point pA = Point.createVector(1.0f, 2.34f, 0.324f);
+            Point pB = Point.createVector(1.0f, 2.34f, 0.324f);
+
+            bool isEqual = Point.arePointsEqual(pA, pB);
+
+            Assert.AreEqual(isEqual, true);
+        }
+
+        [TestMethod]
+        public void ArePointsEqual_AreNotEqual() {
+            Point pA = Point.createVector(1.0f, 2.34f, 0.324f);
+            Point pB = Point.createVector(1.0f, 2.34f, 0.323f);
+
+            bool isEqual = Point.arePointsEqual(pA, pB);
+
+            Assert.AreEqual(isEqual, false);
+        }
     }
 }
