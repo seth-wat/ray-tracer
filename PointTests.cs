@@ -25,7 +25,7 @@ namespace PointTestsNS
 
         [TestMethod]
         public void CreatePoint_CreatesAPoint() {
-            Point p = Point.createPoint(1.0f, 2.34f, 0.324f);
+            Point p = Point.CreatePoint(1.0f, 2.34f, 0.324f);
 
             bool isPoint = p.isPoint();
             bool isVector = p.isVector();
@@ -36,7 +36,7 @@ namespace PointTestsNS
 
         [TestMethod]
         public void CreateVector_CreatesAVector() {
-            Point p = Point.createVector(1.0f, 2.34f, 0.324f);
+            Point p = Point.CreateVector(1.0f, 2.34f, 0.324f);
 
             bool isVector = p.isVector();
             bool isPoint = p.isPoint();
@@ -47,77 +47,77 @@ namespace PointTestsNS
 
         [TestMethod]
         public void ArePointsEqual_AreEqual() {
-            Point pA = Point.createVector(1.0f, 2.34f, 0.324f);
-            Point pB = Point.createVector(1.0f, 2.34f, 0.324f);
+            Point pA = Point.CreateVector(1.0f, 2.34f, 0.324f);
+            Point pB = Point.CreateVector(1.0f, 2.34f, 0.324f);
 
-            bool isEqual = Point.arePointsEqual(pA, pB);
+            bool isEqual = Point.ArePointsEqual(pA, pB);
 
             Assert.AreEqual(isEqual, true);
         }
 
         [TestMethod]
         public void ArePointsEqual_AreNotEqual() {
-            Point pA = Point.createVector(1.0f, 2.34f, 0.324f);
-            Point pB = Point.createVector(1.0f, 2.34f, 0.323f);
+            Point pA = Point.CreateVector(1.0f, 2.34f, 0.324f);
+            Point pB = Point.CreateVector(1.0f, 2.34f, 0.323f);
 
-            bool isEqual = Point.arePointsEqual(pA, pB);
+            bool isEqual = Point.ArePointsEqual(pA, pB);
 
             Assert.AreEqual(isEqual, false);
         }
 
         [TestMethod]
         public void AddPoints_AddsPoints() {
-            Point pA = Point.createPoint(3, -2, 5);
-            Point pB = Point.createVector(-2, 3, 1);
+            Point pA = Point.CreatePoint(3, -2, 5);
+            Point pB = Point.CreateVector(-2, 3, 1);
 
-            Point pExpected = Point.createPoint(1, 1, 6);
-            Point pResult = Point.addPoints(pA, pB);
+            Point pExpected = Point.CreatePoint(1, 1, 6);
+            Point pResult = Point.AddPoints(pA, pB);
 
-            bool isEqual = Point.arePointsEqual(pExpected, pResult);
+            bool isEqual = Point.ArePointsEqual(pExpected, pResult);
 
             Assert.AreEqual(isEqual, true);
         }
 
         [TestMethod]
         public void SubtractPoints_SubtractsPoints() {
-            Point pA = Point.createPoint(3, 2, 1);
-            Point pB = Point.createPoint(5, 6, 7);
+            Point pA = Point.CreatePoint(3, 2, 1);
+            Point pB = Point.CreatePoint(5, 6, 7);
 
-            Point pExpected = Point.createVector(-2, -4, -6);
-            Point pResult = Point.subtractPoints(pA, pB);
+            Point pExpected = Point.CreateVector(-2, -4, -6);
+            Point pResult = Point.SubtractPoints(pA, pB);
 
-            bool isEqual = Point.arePointsEqual(pExpected, pResult);
+            bool isEqual = Point.ArePointsEqual(pExpected, pResult);
 
             Assert.AreEqual(isEqual, true);
         }
 
         [TestMethod]
         public void NegatePoint_NegatesPoint() {
-            Point pA = Point.createVector(1, -2, 3);
+            Point pA = Point.CreateVector(1, -2, 3);
 
-            Point pExpected = Point.createVector(-1, 2, -3);
-            Point pResult = Point.negatePoint(pA);
+            Point pExpected = Point.CreateVector(-1, 2, -3);
+            Point pResult = Point.NegatePoint(pA);
 
-            bool isEqual = Point.arePointsEqual(pResult, pExpected);
+            bool isEqual = Point.ArePointsEqual(pResult, pExpected);
 
             Assert.AreEqual(isEqual, true);
         }
 
         [TestMethod]
         public void ScaleVector_MultipliesByScalar() {
-            Point p = Point.createVector(1, -2, 3);
-            Point scaled = Point.scaleVector(p, 3.5f);
+            Point p = Point.CreateVector(1, -2, 3);
+            Point scaled = Point.ScaleVector(p, 3.5f);
 
-            Point exepected = Point.createVector(3.5f, -7, 10.5f);
+            Point exepected = Point.CreateVector(3.5f, -7, 10.5f);
 
-            bool isEqual = Point.arePointsEqual(scaled, exepected);
+            bool isEqual = Point.ArePointsEqual(scaled, exepected);
 
             Assert.AreEqual(isEqual, true);
         }
 
         [TestMethod]
         public void Compute_Magnitude_A() {
-            Point p = Point.createVector(1, 0, 0);
+            Point p = Point.CreateVector(1, 0, 0);
             double magnitude = p.calculateMagnitude();
 
             double expected = 1;
@@ -127,7 +127,7 @@ namespace PointTestsNS
 
         [TestMethod]
         public void Compute_Magnitude_B() {
-            Point p = Point.createVector(0, 1, 0);
+            Point p = Point.CreateVector(0, 1, 0);
             double magnitude = p.calculateMagnitude();
 
             double expected = 1;
@@ -137,7 +137,7 @@ namespace PointTestsNS
 
         [TestMethod]
         public void Compute_Magnitude_C() {
-            Point p = Point.createVector(0, 0, 1);
+            Point p = Point.CreateVector(0, 0, 1);
             double magnitude = p.calculateMagnitude();
 
             double expected = 1;
@@ -147,7 +147,7 @@ namespace PointTestsNS
 
         [TestMethod]
         public void Compute_Magnitude_D() {
-            Point p = Point.createVector(1, 2, 3);
+            Point p = Point.CreateVector(1, 2, 3);
             double magnitude = p.calculateMagnitude();
 
             double expected = Math.Sqrt(14);
@@ -157,7 +157,7 @@ namespace PointTestsNS
 
         [TestMethod]
         public void Compute_Magnitude_E() {
-            Point p = Point.createVector(-1, -2, -3);
+            Point p = Point.CreateVector(-1, -2, -3);
             double magnitude = p.calculateMagnitude();
 
             double expected = Math.Sqrt(14);
@@ -167,34 +167,34 @@ namespace PointTestsNS
 
         [TestMethod]
         public void Normalize_Normalizes_A() {
-            Point p = Point.createVector(4, 0, 0);
+            Point p = Point.CreateVector(4, 0, 0);
 
-            Point expected = Point.createVector(1, 0, 0);
-            Point result = Point.normalizeVector(p);
+            Point expected = Point.CreateVector(1, 0, 0);
+            Point result = Point.NormalizeVector(p);
 
-            bool isEqual = Point.arePointsEqual(result, expected);
+            bool isEqual = Point.ArePointsEqual(result, expected);
 
             Assert.AreEqual(isEqual, true);
         }
 
         [TestMethod]
         public void Normalize_Normalizes_B() {
-            Point p = Point.createVector(1, 2, 3);
+            Point p = Point.CreateVector(1, 2, 3);
 
-            Point expected = Point.createVector(0.26726f, 0.53452f, 0.80178f);
-            Point result = Point.normalizeVector(p);
+            Point expected = Point.CreateVector(0.26726f, 0.53452f, 0.80178f);
+            Point result = Point.NormalizeVector(p);
 
-            bool isEqual = Point.arePointsEqual(expected, result);
+            bool isEqual = Point.ArePointsEqual(expected, result);
 
             Assert.AreEqual(isEqual, true);
         }
 
         [TestMethod]
         public void CalculateDotProduct_CalculatesDotProduct() {
-            Point pA = Point.createVector(1, 2, 3);
-            Point pB = Point.createVector(2, 3, 4);
+            Point pA = Point.CreateVector(1, 2, 3);
+            Point pB = Point.CreateVector(2, 3, 4);
 
-            float result = Point.calculateDotProduct(pA, pB);
+            float result = Point.CalculateDotProduct(pA, pB);
             float expected = 20f;
 
             Assert.AreEqual(result, expected);
@@ -202,13 +202,13 @@ namespace PointTestsNS
 
         [TestMethod]
         public void CrossProduct_CrossesVectors() {
-            Point pA = Point.createVector(1, 2, 3);
-            Point pB = Point.createVector(2, 3, 4);
+            Point pA = Point.CreateVector(1, 2, 3);
+            Point pB = Point.CreateVector(2, 3, 4);
 
-            Point result = Point.crossProduct(pA, pB);
-            Point expected = Point.createVector(-1, 2, -1);
+            Point result = Point.CrossProduct(pA, pB);
+            Point expected = Point.CreateVector(-1, 2, -1);
 
-            bool isEqual = Point.arePointsEqual(expected, result);
+            bool isEqual = Point.ArePointsEqual(expected, result);
 
             Assert.AreEqual(isEqual, true);
         }
