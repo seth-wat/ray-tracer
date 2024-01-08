@@ -1,3 +1,5 @@
+using System.Numerics;
+
 namespace PointNS
 {
     public class Point {
@@ -72,6 +74,31 @@ namespace PointNS
                 pointA.X * scalar,
                 pointA.Y * scalar,
                 pointA.Z * scalar
+            );
+        }
+
+        public static Point normalizeVector(Point pointA) {
+            double magnitude = pointA.calculateMagnitude();
+            return createVector(
+                pointA.X / (float)magnitude,
+                pointA.Y / (float)magnitude,
+                pointA.Z / (float)magnitude
+            );
+        }
+
+        public static float calculateDotProduct(Point pointA, Point pointB) {
+            return(
+                pointA.X * pointB.X +
+                pointA.Y * pointB.Y +
+                pointA.Z * pointB.Z
+            );
+        }
+
+        public static Point crossProduct (Point pointA, Point pointB) {
+            return createVector(
+                pointA.Y * pointB.Z - pointA.Z * pointB.Y,
+                pointA.Z * pointB.X - pointA.X * pointB.Z,
+                pointA.X * pointB.Y - pointA.Y * pointB.X
             );
         }
 

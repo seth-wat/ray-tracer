@@ -127,7 +127,7 @@ namespace PointTestsNS
 
         [TestMethod]
         public void Compute_Magnitude_B() {
-           Point p = Point.createVector(0, 1, 0);
+            Point p = Point.createVector(0, 1, 0);
             double magnitude = p.calculateMagnitude();
 
             double expected = 1;
@@ -137,7 +137,7 @@ namespace PointTestsNS
 
         [TestMethod]
         public void Compute_Magnitude_C() {
-           Point p = Point.createVector(0, 0, 1);
+            Point p = Point.createVector(0, 0, 1);
             double magnitude = p.calculateMagnitude();
 
             double expected = 1;
@@ -147,7 +147,7 @@ namespace PointTestsNS
 
         [TestMethod]
         public void Compute_Magnitude_D() {
-           Point p = Point.createVector(1, 2, 3);
+            Point p = Point.createVector(1, 2, 3);
             double magnitude = p.calculateMagnitude();
 
             double expected = Math.Sqrt(14);
@@ -157,12 +157,60 @@ namespace PointTestsNS
 
         [TestMethod]
         public void Compute_Magnitude_E() {
-           Point p = Point.createVector(-1, -2, -3);
+            Point p = Point.createVector(-1, -2, -3);
             double magnitude = p.calculateMagnitude();
 
             double expected = Math.Sqrt(14);
 
             Assert.AreEqual(magnitude, expected);
+        }
+
+        [TestMethod]
+        public void Normalize_Normalizes_A() {
+            Point p = Point.createVector(4, 0, 0);
+
+            Point expected = Point.createVector(1, 0, 0);
+            Point result = Point.normalizeVector(p);
+
+            bool isEqual = Point.arePointsEqual(result, expected);
+
+            Assert.AreEqual(isEqual, true);
+        }
+
+        [TestMethod]
+        public void Normalize_Normalizes_B() {
+            Point p = Point.createVector(1, 2, 3);
+
+            Point expected = Point.createVector(0.26726f, 0.53452f, 0.80178f);
+            Point result = Point.normalizeVector(p);
+
+            bool isEqual = Point.arePointsEqual(expected, result);
+
+            Assert.AreEqual(isEqual, true);
+        }
+
+        [TestMethod]
+        public void CalculateDotProduct_CalculatesDotProduct() {
+            Point pA = Point.createVector(1, 2, 3);
+            Point pB = Point.createVector(2, 3, 4);
+
+            float result = Point.calculateDotProduct(pA, pB);
+            float expected = 20f;
+
+            Assert.AreEqual(result, expected);
+        }
+
+        [TestMethod]
+        public void CrossProduct_CrossesVectors() {
+            Point pA = Point.createVector(1, 2, 3);
+            Point pB = Point.createVector(2, 3, 4);
+
+            Point result = Point.crossProduct(pA, pB);
+            Point expected = Point.createVector(-1, 2, -1);
+
+            bool isEqual = Point.arePointsEqual(expected, result);
+
+            Assert.AreEqual(isEqual, true);
         }
     }
 }
